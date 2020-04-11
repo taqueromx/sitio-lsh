@@ -1,17 +1,19 @@
 import React from 'react'
+import { Router } from 'react-router-dom'
 
-import { useAuth } from '../context/auth-context'
+import Routes from '../routes/not_auth'
+import history from '../services/history'
 
-function UnauthenticatedApp(props) {
-    const { signInWithGoogle } = useAuth()
+import GlobalStyles from '../styles/global'
 
+function UnauthenticatedApp() {
     return (
-        <div>
-            <h1>Not Authenticated</h1>
-            <button onClick={signInWithGoogle}>Inicia Sesión</button>
-        </div>
-
+        <Router history={history}>
+            <Routes/>
+            <GlobalStyles />
+        </Router>
     )
 }
+
 
 export default UnauthenticatedApp
