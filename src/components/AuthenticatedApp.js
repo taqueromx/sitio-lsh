@@ -6,9 +6,12 @@ import Routes from '../routes/auth'
 
 import GlobalStyles from '../styles/global'
 
+import Navbar from './auth/Navbar'
+
 function AuthenticatedApp() {
     return (
         <Router history={history}>
+        <Navbar />
         <Routes/>
         <GlobalStyles />
         </Router>

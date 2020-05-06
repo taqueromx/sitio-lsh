@@ -23,6 +23,8 @@ function Dashboard() {
             <p>Estás en el dashboard y podrás hacer cosas de alumno inscrito.</p>
             <br />
             <button onClick={handleSignOut}>Cerrar sesión</button>
+            <br />
+            <a href='/sample'><button>Ir a ejemplo</button></a>
         </div>
     )
 }
