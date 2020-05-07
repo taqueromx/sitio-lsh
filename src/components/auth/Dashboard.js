@@ -21,8 +21,7 @@ function Dashboard() {
 
     function testProjects(){
         return [
-            {name:'Ni;os',description:'test'},
-            {name:'Ni;as',description:'test'}
+            {name:'Coordinación de proyectos',description:'Ayudar en coordinacion de proyectos',organization:'Huellas que trascienden',place:'Oficina HQT SPGG',endDate:'2020-01-03',startDate:'2020-01-03'}
         ];
     };
 
