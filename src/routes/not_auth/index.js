@@ -15,7 +15,7 @@ export default function Routes() {
       <Route path="/about" component={About} />
 
       {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
-      <Route component={SignIn} />
+      <Route component={Home} />
     </Switch>
   );
 }

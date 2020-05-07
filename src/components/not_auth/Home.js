@@ -1,23 +1,8 @@
 import React from 'react'
 import { Flex, Box, Heading, Button, Text } from 'rebass'
-import styled from 'styled-components'
-// function Home() {
-//     return (
-//         <div>
 
-//             <ul>
-//                 <li><a href='/signin'>Inicia sesión</a></li>
-//                 <li><a href='/about'>Acerca de</a></li>
-//             </ul>
-//             <h1>Líder con Sentido Humano</h1>
-//             <h2>Portal de estudiantes</h2>
-//         </div>
-//     )
-// }
 import { useAuth } from '../../context/auth-context'
 import history from '../../services/history'
-
-
 
 function Home() {
     const { signInWithGoogle } = useAuth()
@@ -25,6 +10,9 @@ function Home() {
     const handleSignIn = () => {
         try {
             signInWithGoogle()
+          }
+          catch (e) {
+              console.log(e)
           }
           finally {
             history.push('/dashboard')
@@ -85,12 +73,5 @@ function Home() {
             
     )
 }
-{/* <Button
-sx={{
-    ':hover': {
-    backgroundColor: 'tomato',
-    }
-}}>
-Beep
-</Button> */}
+
 export default Home
