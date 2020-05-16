@@ -28,7 +28,7 @@ function LogoComponent() {
             horizontal='center'
             vertical='center'>
                 <Logo />
-                <span className={css(styles.title)}>Dashboard Kit</span>
+                <span className={css(styles.title)}>Líderes con Sentido Humano</span>
             </Row>
     )
 }
