@@ -2,7 +2,7 @@ import React from 'react'
 
 import withAuth from '../utils/Auth'
 
-import FullPageSpinner from '../components/FullPageSpinner'
+import FullPageSpinner from '../utils/FullPageSpinner'
 
 const AuthContext = React.createContext()
 

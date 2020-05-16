@@ -3,7 +3,7 @@ import React from 'react'
 import { useUser } from '../../context/user-context'
 
 
-import { Box, Heading, Flex, Card, Image, Text } from 'rebass'
+import { Box, Heading, Flex, Card, Image, Text } from 'rebass/styled-components'
 
 function SectionCard(props) {
     return (

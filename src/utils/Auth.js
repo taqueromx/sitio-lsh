@@ -9,7 +9,6 @@ const firebaseAppAuth = firebaseApp.auth()
 const providers = {
   googleProvider: new firebase.auth.GoogleAuthProvider(),
 }
-providers.googleProvider.setCustomParameters({ hd: 'itesm.mx' })
 providers.googleProvider.setCustomParameters({ hd: 'tec.mx' })
 
 export default withFirebaseAuth({
