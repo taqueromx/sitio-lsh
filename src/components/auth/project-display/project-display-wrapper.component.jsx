@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {CardList} from '../project-list/project-list.component';
 
-let helloWorld = <h1>Hello World</h1>;
-let projectsReference = firebase.database();
+const firebase = require('firebase');
+const db = firebase.firestore();
 
 export default class ProjectDisplay extends Component {
 
@@ -10,17 +11,21 @@ export default class ProjectDisplay extends Component {
 
         this.state = {
             projects : {}
-        }
+        };
     }
 
     componentDidMount() {
-        projectsReference.collection('projects')
+        let projectsToSave = []; 
+        db.collection('projects')
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
+                projectsToSave.push(doc.data());
             });
+        }).then(() => {
+            this.setState({projects : projectsToSave});
         })
         .catch(function(error) {
             console.log("Error getting documents: ", error);
@@ -28,8 +33,9 @@ export default class ProjectDisplay extends Component {
     }
 
     render() {
+        const {projects} = this.state;
         return (
-            helloWorld
+            <CardList projects={projects}/>
         )
     }
 }
