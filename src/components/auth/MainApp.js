@@ -6,6 +6,8 @@ import { StyleSheet, css } from 'aphrodite'
 import SidebarComponent from './sidebar/SidebarComponent'
 import HeaderComponent from './header/HeaderComponent'
 
+import ProjectDisplay from './project-display/project-display-wrapper.component'
+
 
 const styles = StyleSheet.create({
     container: {
@@ -44,7 +46,7 @@ class App extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
-                        <span>Contenido</span>
+                        <ProjectDisplay />
                     </div>
                 </Column>
             </Row>
