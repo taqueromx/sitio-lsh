@@ -24,8 +24,13 @@ const styles = StyleSheet.create({
 })
 
 class App extends React.Component {
+    constructor(){
+        super();
 
-    state = { selectedItem: 'Tickets' };
+        this.state = {
+            selectedItem : 'Overview'
+        }
+    }
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);

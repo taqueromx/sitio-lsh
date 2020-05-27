@@ -16,12 +16,10 @@ export default class ProjectDisplay extends Component {
 
     componentDidMount() {
         let projectsToSave = []; 
-        db.collection('projects')
+        db.collection('projects').where('publicado','==',true)
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
                 projectsToSave.push(doc.data());
             });
         }).then(() => {
