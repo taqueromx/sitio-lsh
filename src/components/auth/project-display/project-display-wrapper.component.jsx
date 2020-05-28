@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CardList} from '../project-list/project-list.component';
+import { CardList } from '../project-list/project-list.component';
 
 const firebase = require('firebase');
 const db = firebase.firestore();
