@@ -39,7 +39,7 @@ export const CardList = props => (
                             name='startingDate'
                             type='text'
                             value={props.projects[key].horaInicio || props.projects[key].horarioInicio }
-                            disabled='true'
+                            disabled={true}
                         />
                     </Box>
                     <Box width={1/2} px={2}>
@@ -49,7 +49,7 @@ export const CardList = props => (
                             name='endDate'
                             type='text'
                             value={props.projects[key].horaFin || props.projects[key].horarioFin || props.projects[key].fechaFin}
-                            disabled='true'
+                            disabled={true}
                         />
                     </Box>
                 </Flex>

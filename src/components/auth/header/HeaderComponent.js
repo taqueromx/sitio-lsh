@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
-import { string } from 'prop-types'
-import { Row } from 'simple-flexbox'
-import { StyleSheet, css } from 'aphrodite'
+import { string } from 'prop-types';
+import { Row } from 'simple-flexbox';
+import { StyleSheet, css } from 'aphrodite';
 
-import IconSearch from '../../../assets/sidebar-icons/icon-search'
-import IconBellNew from '../../../assets/sidebar-icons/icon-bell-new'
+import IconSearch from '../../../assets/sidebar-icons/icon-search';
+import IconBellNew from '../../../assets/sidebar-icons/icon-bell-new';
 
 const styles = StyleSheet.create({
     avatar: {
@@ -81,21 +81,26 @@ export default class HeaderComponent extends Component {
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
-            this.setState({user:user});
-        });
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // console.log(user.displayName);
+              debugger;
+              // this.setState({user:user});
+            } else {
+              console.log('Not logged in.');
+            }
+          });
     }
 
     render() {
 
         const { user, icon, title, ...otherProps } = this.props;
 
-
         HeaderComponent.propTypes = {
             title: string
         }
-
-        return(
+        
+        return (
             <Row className={css(styles.container)}
                  vertical="center"
                  horizontal="space-between" {...otherProps}>
@@ -109,13 +114,13 @@ export default class HeaderComponent extends Component {
                     </div>
                     {/*<div className={css(styles.separator)}></div>*/}
                     <Row vertical="center">
-                        <span className={css(styles.name, styles.cursorPointer)}>{user.displayName}</span>
+                        <span className={css(styles.name, styles.cursorPointer)}>{}</span>
                         <img src="https://avatars3.githubusercontent.com/u/21162888?s=460&v=4"
                              alt="avatar"
                              className={css(styles.avatar, styles.cursorPointer)} />
                     </Row>
                 </Row>
             </Row>
-        )
+        );
     }
 }
