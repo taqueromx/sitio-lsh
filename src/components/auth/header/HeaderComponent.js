@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 import { string } from 'prop-types'
 import { Row } from 'simple-flexbox'
@@ -65,36 +65,57 @@ const styles = StyleSheet.create({
             marginLeft: 12
         }
     }
-})
+});
 
-function HeaderComponent(props) {
-    const { icon, title, ...otherProps } = props;
-    return (
-        <Row className={css(styles.container)}
-            vertical="center"
-            horizontal="space-between" {...otherProps}>
+const firebase = require('firebase');
+
+export default class HeaderComponent extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: null
+        }
+
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            this.setState({user:user});
+        });
+    }
+
+    render() {
+
+        const { user, icon, title, ...otherProps } = this.props;
+
+
+        HeaderComponent.propTypes = {
+            title: string
+        }
+
+        return(
+            <Row className={css(styles.container)}
+                 vertical="center"
+                 horizontal="space-between" {...otherProps}>
                 <span className={css(styles.title)}>{title}</span>
                 <Row vertical="center">
                     <div className={css(styles.iconStyles)}>
                         <IconSearch />
                     </div>
                     <div className={css(styles.iconStyles)}>
-                            <IconBellNew />
+                        <IconBellNew />
                     </div>
-                    <div className={css(styles.separator)}></div>
+                    {/*<div className={css(styles.separator)}></div>*/}
                     <Row vertical="center">
-                        <span className={css(styles.name, styles.cursorPointer)}>Alejandro Longoria Esparza</span>
+                        <span className={css(styles.name, styles.cursorPointer)}>{user.displayName}</span>
                         <img src="https://avatars3.githubusercontent.com/u/21162888?s=460&v=4"
-                            alt="avatar"
-                            className={css(styles.avatar, styles.cursorPointer)} />
+                             alt="avatar"
+                             className={css(styles.avatar, styles.cursorPointer)} />
                     </Row>
                 </Row>
-        </Row>
-    )
+            </Row>
+        )
+    }
 }
-
-HeaderComponent.propTypes = {
-    title: string
-}
-
-export default HeaderComponent
