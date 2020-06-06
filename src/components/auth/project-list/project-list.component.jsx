@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Heading, Text, Flex, Box } from 'rebass';
+import { Card, Heading, Text, Flex, Box, Button } from 'rebass';
 import { Label, Input } from '@rebass/forms';
 
 import './project-list.style.css';
@@ -53,6 +53,9 @@ export const CardList = props => (
                         />
                     </Box>
                 </Flex>
+                <Box width={1} px={2}>
+                    <Button variant='primary' className='button-width'>Inscribir</Button>
+                </Box>
             </Card>
         ))}
     </div>

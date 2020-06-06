@@ -6,8 +6,8 @@ const db = firebase.firestore();
 
 export default class ProjectDisplay extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             projects : {}

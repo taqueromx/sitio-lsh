@@ -28,6 +28,10 @@
     transform: scale(1.05);
 }
 
+.button-width {
+  width: 100%;
+}
+
 Label {
   box-sizing: border-box;
   min-width: 0px;

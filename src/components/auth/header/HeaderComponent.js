@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         }
     }
 });
-
 const firebase = require('firebase');
 
 export default class HeaderComponent extends Component {
@@ -75,27 +74,23 @@ export default class HeaderComponent extends Component {
         super(props);
 
         this.state = {
-            user: null
+            user: {}
         }
 
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              // console.log(user.displayName);
-              debugger;
-              // this.setState({user:user});
-            } else {
-              console.log('Not logged in.');
-            }  
-          });
+        const user = firebase.auth().currentUser;
+        this.setState({
+            user : user
+        });
     }
 
     render() {
 
-        const { user, icon, title, ...otherProps } = this.props;
-
+        const { icon, title, ...otherProps } = this.props;
+        const { user } = this.state; // Local state assigment. 
+    
         HeaderComponent.propTypes = {
             title: string
         }
@@ -114,7 +109,7 @@ export default class HeaderComponent extends Component {
                     </div>
                     {/*<div className={css(styles.separator)}></div>*/}
                     <Row vertical="center">
-                        <span className={css(styles.name, styles.cursorPointer)}>{}</span>
+                        <span className={css(styles.name, styles.cursorPointer)}>{user.displayName}</span>
                         <img src="https://avatars3.githubusercontent.com/u/21162888?s=460&v=4"
                              alt="avatar"
                              className={css(styles.avatar, styles.cursorPointer)} />
