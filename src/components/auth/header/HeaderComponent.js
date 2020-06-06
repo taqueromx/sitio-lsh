@@ -88,7 +88,7 @@ export default class HeaderComponent extends Component {
               // this.setState({user:user});
             } else {
               console.log('Not logged in.');
-            }
+            }  
           });
     }
 
