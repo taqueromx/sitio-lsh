@@ -13,12 +13,13 @@ const db = firebase.firestore();
 
 let projects = 'a'; 
 
-const projectsList= [
+let  projectsList= [
     'Mozilla',
     'Proyecto 99',
     'No se we',
     'Rayo transformador',
 ];
+
 
 
 
@@ -28,18 +29,29 @@ function componentDidMount() {
     .get()
     .then(function(querySnapshot){
         querySnapshot.forEach(function(doc){
-            projectsToDisplay.push(doc.data());
+            projectsToDisplay.push(doc.data().nombre);
         });
     }).then( () =>{
-        projectsList= projectsToDisplay;
+        projectsList= projectsToDisplay.proyecto;
     })
     .catch(function(error){
         console.log("Error getting documents: ", error);
     });
+
+    return projectsToDisplay; 
+}
+
+// Mantenerlo en una constante evita que se esten haciendo 
+//consultas a firebase a cada segundo
+
+const aux = componentDidMount();
+function loadProjectsToArr(){
+    {console.log(aux)}
+    return aux;
 }
 
 function pushToFirebase(props){
-    db.collection("projects").doc("projects").set({
+    db.collection("guias").doc().set({
         nombre: props.nombre,
         apellidoPaterno: props.apellidoPaterno,
         apellidoMaterno: props.apellidoMaterno,
@@ -48,13 +60,15 @@ function pushToFirebase(props){
         carrera: props.carrera,
         email: props.email,
         tallaPlayera: props.tallaPlayera,
-        //projects: '',
+        projects: props.projects,
     })
     .then(function() {
         console.log("Guia registrado!");
+        
     })
     .catch(function(error){
         console.log("Error al registrar guia"); 
+        console.log(error)
     }); 
 }
 
@@ -62,20 +76,26 @@ function pushToFirebase(props){
 const FormValidation =  object().shape({
     nombre: string()
         .required("Nombre es requerido")
-        .min(5, 'El nombre es muy corto')
+        .min(3, 'El nombre es muy corto')
         .max(50, 'Nombre muy largo'),
     apellidoPaterno: string()
         .required("apellido Paterno es requerido")
-        .min(8, 'Muy corto')
+        .min(5, 'Muy corto')
         .max(50, 'Muy largo'),
     apellidoMaterno: string()
         .required("apellido Materno es requerido")
-        .min(8, 'Muy corto')
+        .min(5, 'Muy corto')
         .max(50, 'Muy largo'),
+    carrera: string()
+        .required("matricula es requerido")
+        .max(6, 'Solo indica las siglas de la carrera'),
     matricula: string()
-        .required("matricula es requerido"),
+        .required("matricula es requerido")
+        .min(9, 'Muy corto')
+        .max(9, 'Muy largo'),
     semestre: number()
-        .required("semestre es requerido"),
+        .required("semestre es requerido")
+        .max(13, 'Numero de semestre my alto'),
     email: string()
         .required("email es requerido"),
     tallaPlayera: string()
@@ -94,13 +114,15 @@ const ProjectDisplay = () => (
             matricula: '',
             semestre: '',
             email: '',
-            tallaPlayera: 'M',
+            tallaPlayera: 'C',
             projects: '',
         }}
         
         onSubmit = {
             values => {
             console.log(values); 
+
+            pushToFirebase(values); 
         }}
 
         validationSchema ={FormValidation}
@@ -141,6 +163,13 @@ const ProjectDisplay = () => (
                             ) : null}
                         </div>
                         <div className="row">
+                            Carrera (siglas) 
+                            <Field name="carrera" type="text" className="input" />
+                            {errors.carrera && touched.carrera ? (
+                                <div  className="error" >{errors.carrera}</div>
+                            ) : null}
+                        </div>
+                        <div className="row">
                             Semestre:
                             <Field name="semestre" type="number" className="input" />
                             {errors.semestre && touched.semestre ? (
@@ -174,15 +203,16 @@ const ProjectDisplay = () => (
 
                             
                             </div>
-                           
+                            
                             <div className="assignedProjecys">
                                 Nombre:
                                 <Field 
                                     name="projects" 
                                     className="input" 
                                     component={FormikAutoComplete}
-                                    options= {projectsList}
-                                    onClick={componentDidMount}
+                                    //options= {loadProjectsToArr()}
+                                    options = {aux}
+                                    onClick= {loadProjectsToArr}
                                 />
                             </div>
         
@@ -200,4 +230,3 @@ const ProjectDisplay = () => (
 ); 
 
 export default ProjectDisplay; 
-
