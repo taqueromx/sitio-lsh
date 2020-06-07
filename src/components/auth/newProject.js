@@ -8,8 +8,16 @@ const firebase = require('firebase');
 const db = firebase.firestore();
 
 
+
+// Funcion para alert de guia registrado
+// settear fields a vacio
+function done(){
+    alert("Proyecto Registrado"); 
+    
+}
+
 function pushToFirebase(props){
-    db.collection("projects").doc("projects").set({
+    db.collection("projects").doc().set({
         nombre: props.nombre,
         organizador: props.organizador,
         descripcionGeneral: props.descripcionGeneral,
@@ -20,14 +28,16 @@ function pushToFirebase(props){
         nombreCompleto: props.nombreCompleto,
         email: props.email,
         telefono: props.telefono,
-        //projects: '',
-
+        publicado: true,
+        
     })
     .then(function() {
         console.log("Proyecto registrado!");
+        done();
     })
     .catch(function(error){
         console.log("Error al registrar Proyecto"); 
+        console.log(error)
     }); 
 }
 
@@ -69,8 +79,8 @@ const FormValidation = object().shape({
     telefono: number()
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese su telefono')
-    .min(10000000, 'Telefono debe tener 8 digitos minimo')
-    .max(99999999, 'Telefono debe tener 8 digitos maximo'),
+    .min(1000000000, 'Telefono debe tener 10 digitos minimo')
+    .max(9999999999, 'Telefono debe tener 10 digitos maximo'),
   });
 
 // options for the dropdown
@@ -82,10 +92,6 @@ const handleChangeCategoria = e => {
     console.log("2:  ",categoria,"  ", e.target.name);
 }
 
-
-const submitValidated = e =>{
-
-}
 
 
 const MyForm = () => (
@@ -107,7 +113,8 @@ const MyForm = () => (
                 console.log("clicked 1 ");
                 console.log(values);
                 console.log("ends clicked 1 ");
-               
+
+                pushToFirebase(values);
             }}
 
             validationSchema ={FormValidation}
