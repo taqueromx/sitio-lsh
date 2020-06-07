@@ -8,6 +8,8 @@ import Dashboard from '../../components/auth/Dashboard'
 import newProject from '../../components/auth/newProject'
 import newGuia from '../../components/auth/newGuia'
 import newLider from '../../components/auth/newLider'
+import newAdmin from '../../components/auth/newAdmin'
+
 
 import '../../styles/styleFormP.scss'; 
 
@@ -21,6 +23,7 @@ export default function Routes() {
       <Route path="/newProject" component={newProject} />
       <Route path="/newGuia" component={newGuia} />
       <Route path="/newLider" component={newLider} />
+      <Route path="/newAdmin" component={newAdmin} />
       {/* <Route path="/profile" component={Profile} /> */}
 
       {/* redirect user to Dashboard if route does not exist */}
