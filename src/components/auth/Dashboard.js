@@ -27,6 +27,7 @@ function Dashboard() {
             <a href='/newProject'><button>Crear Proyecto </button> </a>
             <a href='/newGuia'><button>Registrar Guia </button> </a>
             <a href='/newLider'><button>Registrar Lider </button> </a>
+            <a href='/newAdmin'><button>Registrar Administrador </button> </a>
             <button onClick={handleSignOut}>Cerrar sesión</button>
         </div>
     )
