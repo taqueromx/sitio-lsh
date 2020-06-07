@@ -12,7 +12,7 @@ const db = firebase.firestore();
 
 let projects = 'a'; 
 
-const projectsList= [
+let projectsList= [
     'Mozilla',
     'Proyecto 99',
     'No se we',
@@ -25,19 +25,35 @@ function componentDidMount() {
     .get()
     .then(function(querySnapshot){
         querySnapshot.forEach(function(doc){
-            projectsToDisplay.push(doc.data());
+            projectsToDisplay.push(doc.data().nombre);
         });
     }).then( () =>{
         //this.setState({projects : projectsToDisplay});
-        projectsList= projectsToDisplay;
+        projectsList= projectsToDisplay.proyecto;
     })
     .catch(function(error){
         console.log("Error getting documents: ", error);
     });
+
+    return projectsToDisplay; 
 }
 
+// Funcion para alert de guia registrado
+// settear fields a vacio
+function done(){
+    alert("Lider Registrado"); 
+    
+}
+
+const aux = componentDidMount();
+function loadProjectsToArr(){
+    {console.log(aux)}
+    return aux;
+}
+
+
 function pushToFirebase(props){
-    db.collection("projects").doc("projects").set({
+    db.collection("lideres").doc().set({
         nombre: props.nombre,
         apellidoPaterno: props.apellidoPaterno,
         apellidoMaterno: props.apellidoMaterno,
@@ -46,35 +62,65 @@ function pushToFirebase(props){
         carrera: props.carrera,
         email: props.email,
         tallaPlayera: props.tallaPlayera,
-        //projects: '',
+        projects: props.projects,
     })
     .then(function() {
         console.log("Lider registrado!");
+        done();
     })
     .catch(function(error){
         console.log("Error al registrar Lider"); 
+        console.log(error)
     }); 
 }
 
 
 const FormValidation = object().shape({
     nombre: string()
-        .required("Nombre es requerido"),
+        .required("Nombre es requerido")
+        .min(3, 'El nombre es muy corto')
+        .max(50, 'Nombre muy largo'),
     apellidoPaterno: string()
-        .required("apellido Paterno es requerido"),
+        .required("apellido Paterno es requerido")
+        .min(5, 'Muy corto')
+        .max(50, 'Muy largo'),
     apellidoMaterno: string()
-        .required("apellido Materno es requerido"),
+        .required("apellido Materno es requerido")
+        .min(5, 'Muy corto')
+        .max(50, 'Muy largo'),
     matricula:  string()
-        .required("matricula es requerido"),
+        .required("matricula es requerido")
+        .min(9, 'Muy corto')
+        .max(9, 'Muy largo'),
     semestre:  number()
-        .required("semestre es requerido"),
+        .required("semestre es requerido")
+        .max(13, 'Numero de semestre my alto'),
     carrera:  string()
-        .required("carrera es requerido"),
+        .required("carrera es requerido")
+        .max(6, 'Solo indica las siglas de la carrera'),
     email: string()
         .required("email es requerido"),
     tallaPlayera: string()
         .required("tallaPlayera es requerido"),
-})
+}); 
+
+function getSelected(props){
+    let selected = props.name; 
+    console.log(selected);
+}
+
+
+
+const proyectosAsignados = props => (
+    <div>
+        {Object.keys(props).map((key,index) => (
+            <div
+                key={index}
+                value={props.nombre}
+            ></div>
+        ))}
+    </div>
+);
 
 
 const NewLider = () => (
@@ -88,21 +134,27 @@ const NewLider = () => (
                     semestre: '',
                     carrera:'',
                     email: '',
-                    tallaPlayera: '',
+                    tallaPlayera: 'C',
                     projects: '',
                 }}
                 
-                onSubmit= {
+                onSubmit = {
                     values => {
-                    console.log(values)
+                    console.log(values);
+                    pushToFirebase(values); 
+                        
+                   
                 }}
-
+               
                 validationSchema ={FormValidation}
+                
             >
-                {({errors, touched})=>(
+                {({errors, touched}) => (
                         <div className="container">
                             <Form >
-                                <div className="formTitle">Registrar Lider</div>
+                                <div className="formTitle">
+                                    Registrar Lider
+                                </div>
                                 <div className="row">
                                     Nombre:
                                     <Field name="nombre" type="text" className="input" />
@@ -169,7 +221,7 @@ const NewLider = () => (
                                     <div className="formSubTitle">Proyectos Asignados:</div>
                                     <div className="AssignedProjects">
                                         {/*  Aqui deben aparecer proyectos seleccionados   */}
-
+                                        
                                     
                                     </div>
                                    
@@ -179,12 +231,19 @@ const NewLider = () => (
                                             name="projects" 
                                             className="input" 
                                             component={FormikAutoComplete}
-                                            options= {projectsList}
-                                            onClick={componentDidMount}
+                                            options= {aux}
+                                            onClick={loadProjectsToArr}
+                                            //onChange={val => getSelected(val)}
+                                           // onSelect={val => proyectosAsignados(val)}
+                                           //onChange={handleChange}
                                         />
                                     </div>
                                     <div className="rowMid">
-                                        <div type="add" className={"btnAddProject"}  >
+                                        <div 
+                                            className={"btnAddProject"}  
+                                          //  onClick= {getSelected2}
+                                        
+                                        >
                                             Agregar Proyecto
                                         </div>
                                         
@@ -192,7 +251,7 @@ const NewLider = () => (
                                    
                                 </div>
                                 <div className="row">
-                                    <button type="submit" className={"submit"} >
+                                    <button type="submit" className="submit" >
                                         Submit
                                     </button>
                                 </div>
