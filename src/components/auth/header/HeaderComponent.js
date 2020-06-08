@@ -90,8 +90,6 @@ export default class HeaderComponent extends Component {
 
         const { icon, title, ...otherProps } = this.props;
         const { user } = this.state; // Local state assigment. 
-
-        console.log(user);
     
         HeaderComponent.propTypes = {
             title: string
@@ -109,11 +107,10 @@ export default class HeaderComponent extends Component {
                     <div className={css(styles.iconStyles)}>
                         <IconBellNew />
                     </div>
-                    {/*<div className={css(styles.separator)}></div>*/}
                     <Row vertical="center">
                         <span className={css(styles.name, styles.cursorPointer)}>{user.displayName}</span>
                         <img src={user.photoURL}
-                             alt="profile photo"
+                             alt="img"
                              className={css(styles.avatar, styles.cursorPointer)} />
                     </Row>
                 </Row>

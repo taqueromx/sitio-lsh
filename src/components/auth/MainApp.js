@@ -7,6 +7,7 @@ import SidebarComponent from './sidebar/SidebarComponent'
 import HeaderComponent from './header/HeaderComponent'
 
 import ProjectDisplay from './project-display/project-display-wrapper.component'
+import { PostDisplay } from './post-display/postWrapper.component'
 
 
 const styles = StyleSheet.create({
@@ -51,7 +52,7 @@ class App extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
-                        <ProjectDisplay />
+                        <PostDisplay />
                     </div>
                 </Column>
             </Row>
