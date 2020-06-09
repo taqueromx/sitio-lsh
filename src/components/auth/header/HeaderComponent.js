@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         }
     }
 });
-const firebase = require('firebase');
 
 export default class HeaderComponent extends Component {
 
@@ -74,22 +73,13 @@ export default class HeaderComponent extends Component {
         super(props);
 
         this.state = {
-            user: {}
+            ...this.state
         }
-
-    }
-
-    componentDidMount() {
-        const user = firebase.auth().currentUser;
-        this.setState({
-            user : user
-        });
     }
 
     render() {
 
-        const { icon, title, ...otherProps } = this.props;
-        const { user } = this.state; // Local state assigment. 
+        const { user, icon, title, ...otherProps } = this.props;
     
         HeaderComponent.propTypes = {
             title: string

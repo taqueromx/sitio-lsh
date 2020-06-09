@@ -9,6 +9,7 @@ import HeaderComponent from './header/HeaderComponent'
 import ProjectDisplay from './project-display/project-display-wrapper.component'
 import { PostDisplay } from './post-display/postWrapper.component'
 
+const firebase = require('firebase');
 
 const styles = StyleSheet.create({
     container: {
@@ -29,12 +30,17 @@ class App extends React.Component {
         super();
 
         this.state = {
-            selectedItem : 'Overview'
+            selectedItem : 'Overview',
+            user : {}
         }
     }
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
+        const user = firebase.auth().currentUser;
+        this.setState({
+            user : user
+        });
     }
 
     componentWillUnmount() {
@@ -50,7 +56,10 @@ class App extends React.Component {
                 <SidebarComponent selectedItem={selectedItem}
                     onChange={(selectedItem) => this.setState({ selectedItem })} />
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
-                    <HeaderComponent title={selectedItem} />
+                    <HeaderComponent 
+                        title={selectedItem} 
+                        user={this.state.user}
+                        />
                     <div className={css(styles.content)}>
                         <PostDisplay />
                     </div>
