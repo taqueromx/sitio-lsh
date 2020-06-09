@@ -50,7 +50,7 @@ class App extends React.Component {
     resize = () => this.forceUpdate();
     
     render() {
-        const { selectedItem } = this.state;
+        const { selectedItem, user } = this.state;
         return (
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem}
@@ -58,7 +58,7 @@ class App extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent 
                         title={selectedItem} 
-                        user={this.state.user}
+                        user={user}
                         />
                     <div className={css(styles.content)}>
                         <PostDisplay />
