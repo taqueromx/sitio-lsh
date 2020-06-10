@@ -30,12 +30,14 @@ function FirstSetup() {
     
     let registroCompletado = false;
 
-        db.collection('usuarios').where('uid', '==', uid)
+        db.collection('usuarios').where('email', '==', email)
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 registroCompletado = doc.data();
-            })
+            });
+        }).then( () =>{
+            history.push('/dashboard')
         })
         .catch(function(error) {
             console.log('Error getting doccuments: ', error);

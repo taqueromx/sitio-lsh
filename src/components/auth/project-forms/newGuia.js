@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import { Field, Form, Formik } from 'formik';
 import '../../../styles/styleFormP.scss'; 
 
-
+ 
 
 import { object, string, number} from 'yup';
 import FormikAutoComplete from './FormikAutocomplete '
