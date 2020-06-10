@@ -15,12 +15,12 @@ export const ProjectCard = ({project, enrollInProject, firstTime, userType}) => 
                     <Text>{'Matricula: '+project.body.lideresAsignados[1]}</Text>
                     <Text>{'Correo: '+project.body.lideresAsignados[1] + '@itesm.mx'}</Text>
                 </Box>;
-    }else if(userType === 'lider' && project.body.guiaAsignados !== undefined){
+    }else if(userType === 'lider' && project.body.guiaAsignado !== undefined){
         footer = <Box width={1} px={2}>
                     <Label>Guia Asignado: </Label>
-                    <Text>{'Nombre: '+project.body.guiaAsignados[0]}</Text>
-                    <Text>{'Matricula: '+project.body.guiaAsignados[1]}</Text>
-                    <Text>{'Correo: '+project.body.guiaAsignados[1] + '@itesm.mx'}</Text>
+                    <Text>{'Nombre: '+project.body.guiaAsignado[0]}</Text>
+                    <Text>{'Matricula: '+project.body.guiaAsignado[1]}</Text>
+                    <Text>{'Correo: '+project.body.guiaAsignado[1] + '@itesm.mx'}</Text>
                 </Box>;
     }else{
         footer = <Box></Box>;
