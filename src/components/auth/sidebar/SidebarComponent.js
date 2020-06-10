@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
 
 class SidebarComponent extends React.Component {
 
+    
+
     state = { expanded: false };
 
     onItemClicked = (item) => {
@@ -92,6 +94,7 @@ class SidebarComponent extends React.Component {
     }
 
     render() {
+
         const { expanded } = this.state;
         const isMobile = this.isMobile();
         return (
@@ -102,9 +105,9 @@ class SidebarComponent extends React.Component {
                         <LogoComponent />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Overview" icon={IconOverview}
-                                onClick={() => this.onItemClicked('Overview')}
-                                active={this.props.selectedItem === 'Overview'}
+                                title="Resumen" icon={IconOverview}
+                                onClick={() => this.onItemClicked('Resumen')}
+                                active={this.props.selectedItem === 'Resumen'}
                             />
                             <MenuItemComponent
                                 title="Proyectos" icon={IconTickets}
@@ -116,26 +119,19 @@ class SidebarComponent extends React.Component {
                                 onClick={() => this.onItemClicked('Ideas')}
                                 active={this.props.selectedItem === 'Ideas'} />
                             <MenuItemComponent
-                                title="Contacts" icon={IconContacts}
-                                onClick={() => this.onItemClicked('Contacts')}
-                                active={this.props.selectedItem === 'Contacts'} />
-                            <MenuItemComponent
-                                title="Agents" icon={IconAgents}
-                                onClick={() => this.onItemClicked('Agents')}
-                                active={this.props.selectedItem === 'Agents'} />
-                            <MenuItemComponent
-                                title="Articles" icon={IconArticles}
-                                onClick={() => this.onItemClicked('Articles')}
-                                active={this.props.selectedItem === 'Articles'} />
+                                title="Contactos" icon={IconContacts}
+                                onClick={() => this.onItemClicked('Contactos')}
+                                active={this.props.selectedItem === 'Contactos'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" icon={IconSettings}
+                                title="Configuración" icon={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
                             <MenuItemComponent
-                                title="Subscription" icon={IconSubscription}
-                                onClick={() => this.onItemClicked('Subscription')}
-                                active={this.props.selectedItem === 'Subscription'} />
+                                title="Cerrar Sesión" icon={IconSubscription}
+                                // onClick={handleSignOut()}
+                                onClick={() => this.onItemClicked('SignOut')}
+                                active={this.props.selectedItem === 'SignOut'} />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}
