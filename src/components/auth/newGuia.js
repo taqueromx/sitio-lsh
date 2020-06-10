@@ -20,7 +20,10 @@ let  projectsList= [
     'Rayo transformador',
 ];
 
-
+function done(){
+    alert("Guia Registrado"); 
+    window.location.reload();
+}
 
 
 function componentDidMount() {
@@ -64,7 +67,7 @@ function pushToFirebase(props){
     })
     .then(function() {
         console.log("Guia registrado!");
-        
+        done(); 
     })
     .catch(function(error){
         console.log("Error al registrar guia"); 
@@ -100,6 +103,8 @@ const FormValidation =  object().shape({
         .required("email es requerido"),
     tallaPlayera: string()
         .required("tallaPlayera es requerido"),
+    projects: string()
+        .required("projects es requerido"),
 }); 
 
 
@@ -230,3 +235,4 @@ const ProjectDisplay = () => (
 ); 
 
 export default ProjectDisplay; 
+
