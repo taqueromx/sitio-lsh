@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         paddingRight: 32
     },
     title: {
-        fontFamily: 'Muli',
+        fontFamily: 'inherit',
         fontSize: 16,
         lineHeight: '20px',
         letterSpacing: '0.2px',
