@@ -123,8 +123,7 @@ export default class TableWrapper extends Component {
     }
 
     componentDidMount(){
-        let dataToSave = []; 
-        let test = false;
+        let dataToSave = [];
 
         if(this.props.selectedItem === 'Todos los Proyectos'){
           db.collection('projects')

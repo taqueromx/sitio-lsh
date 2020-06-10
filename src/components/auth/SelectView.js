@@ -15,18 +15,16 @@ import NewUser from'./project-forms/newUser'
 function SelectView({selectedItem, user}) {
         switch (selectedItem) {
             case 'Proyectos':
-                return <ProjectDisplay/>
-                break;
+                return <TableWrapper selectedItem={'Todos los Proyectos'}/>;
             case 'SignOut':
                 return <SignOut />
-            // case 'Asignación':
-            //     return;
-            //     break;   
+            case 'Asignación':
+                return <ProjectDisplay user={user}/>
             // case 'Mi Líder':
                 // return <>
                 {/* break */}
             case 'Ver Usuarios':
-                return <TableWrapper selectedItem={selectedItem}/>
+                return <TableWrapper selectedItem={selectedItem}/>;
             case 'Registrar Usuarios':
                 return <NewLider/>; 
             case 'Todos los Proyectos':
