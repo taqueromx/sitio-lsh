@@ -3,6 +3,7 @@ import { Flex } from 'rebass'
 import styled from 'styled-components'
 
 import UserEditable from './userEditable'
+import EditPassword  from './editPassword'
 
 import { useUser } from '../../../context/user-context'
 
@@ -15,6 +16,7 @@ const BlueFlex = styled(Flex)`
     background: #f6f6f6;
 
 `
+let adminG = ''
 const Header = styled.h1`
     color:black;
 `
@@ -30,7 +32,7 @@ function componentDidMount(userActual){
         });
     }).then( () =>{
         aux = userData; 
-        //console.log("userData: ", userData); 
+        console.log("userData: ", userData); 
         return userData; 
     })
     .catch(function(error) {
@@ -40,20 +42,24 @@ function componentDidMount(userActual){
     console.log("userData from func: ", userData); 
     return userData; 
 }
-function componentDidMountPassword(userActual){
-    let admin = false
-    db.collection('admin').where('email', '==', userActual.email)
+
+
+function componentDidMountPassword(email){
+    console.log("email:", email);
+    let aux = {} 
+    let admin = {}
+    db.collection('admin').where('email','==',email)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            admin = true
+            aux= doc.data()
         });
-    }).then( () =>{
-        if(admin) 
-            return true 
+        admin = true; 
+    }).then( () =>{ 
+        admin = true; 
     })
     .catch(function(error) {
-        console.log('Error getting doccuments: ', error);
+        console.log('Error getting documents: ', error);
     })
     return admin; 
 }
@@ -72,19 +78,16 @@ function UpdateUser(){
     let carrera = userActual.carrera
     let tipoUsuario = userActual.tipoUsuario
 
-  //  console.log("userActual:", userActual);
+    //console.log("userActual:", userActual);
 
     let arr = componentDidMount(userActual); 
 
-   // console.log("userData data second");
-    //console.log("userData:  ",userData); 
-
     /// Know if user is admin
-    let admin = componentDidMountPassword(userActual); 
+     adminG = componentDidMountPassword(email); 
 
     ///
-    //console.log("admin 2 ", admin); 
-    if(admin){
+   // console.log("admin 2 ", adminG); 
+    if(adminG === true){
         return(
             <div>
                 <BlueFlex
@@ -103,7 +106,7 @@ function UpdateUser(){
                     flexDirection='column'
                 >
                     <Header>Actualizar contraseña</Header>
-                    <UserEditable uid={uid} email={email} firstName={firstName} apellidoPaterno={apellidoPaterno} apellidoMaterno={apellidoMaterno}  matricula={matricula} semestre={semestre} carrera={carrera} tipoUsuario={tipoUsuario}  />
+                    <EditPassword uid={uid} email={email} nombre={fullName}  />
                 </BlueFlex>
             </div>
             
