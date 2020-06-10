@@ -13,7 +13,7 @@ const db = firebase.firestore();
 // settear fields a vacio
 function done(){
     alert("Proyecto Registrado"); 
-    
+    window.location.reload();
 }
 
 function pushToFirebase(props){
@@ -48,17 +48,17 @@ const FormValidation = object().shape({
     nombre: string()
     .required('Please enter your project name')
     .min(5, 'El nombre es muy corto')
-    .max(50, 'Nombre muy largo'),
+    .max(200, 'Nombre muy largo'),
     organizador: string()
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese el organizador')
     .min(8, 'Muy corto')
-    .max(50, 'Muy largo'),
+    .max(200, 'Muy largo'),
     descripcionGeneral: string()
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese breve descripcion')
     .min(15, 'Muy corto')
-    .max(75, 'Muy largo'),
+    .max(550, 'Muy largo'),
     fechaInicio: date()
     .required('Por favor ingrese fecha de inicio'),
     fechaCierre: date()
@@ -67,12 +67,12 @@ const FormValidation = object().shape({
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese lugar')
     .min(4, 'Muy corto')
-    .max(50, 'Muy largo'),
+    .max(300, 'Muy largo'),
     nombreCompleto: string()
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese nombre completo')
-    .min(10, 'Muy corto')
-    .max(50, 'Muy largo'),
+    .min(3, 'Muy corto')
+    .max(100, 'Muy largo'),
     email: string()
     /* .min(6, 'Su nombre de usuario debe ser al menos 6 caracteres de largo') */
     .required('Por favor ingrese su correo electronico'),
