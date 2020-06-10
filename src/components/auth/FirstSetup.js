@@ -38,7 +38,7 @@ function FirstSetup() {
             });
         }).then( () =>{
             //history.push('/dashboard')
-            console.log(registroCompletado)
+            //console.log(registroCompletado)
             if (registroCompletado) {
                 history.push('/dashboard')
             }
