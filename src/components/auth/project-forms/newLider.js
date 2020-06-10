@@ -59,6 +59,7 @@ function pushToFirebase(props){
         matricula: props.matricula,
         semestre: props.semestre,
         carrera: props.carrera,
+        tipo: 'Lider',
         email: props.email,
         tallaPlayera: props.tallaPlayera,
         projects: props.projects,
@@ -204,7 +205,6 @@ export default class NewLider extends Component{
                                         <div  className="error" >{errors.email}</div>
                                     ) : null}
                                 </div>
-                                
                                 <div className="row">
                                     Talla Playera:
                                     <Field 
