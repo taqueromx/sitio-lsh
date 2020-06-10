@@ -24,12 +24,14 @@ const columns = [
     name: 'Descripcion',
     selector: 'descripcionGeneral',
     sortable: false,
+    width: '400px',
     wrap: true
   },
   {
     name: 'Lugar',
     selector: 'lugar',
     sortable: false,
+    width: '400px',
     wrap: true
   },
   {
@@ -53,7 +55,7 @@ const columns = [
   {
     name: 'Publicado?',
     selector: 'publicado',
-    sortable: true,
+    sortable: false,
     wrap: true
   },
 ];
@@ -64,7 +66,7 @@ export default class TableWrapper extends Component {
         super(props);
         this.state = {
             ...this.state,
-            projects : [],
+            tableData : [],
             loading: true
         }
     }
@@ -76,9 +78,9 @@ export default class TableWrapper extends Component {
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 projectsToSave.push({...doc.id,...doc.data()});
-            });
+            }); 
         }).then(() => {
-            this.setState({projects:projectsToSave,loading:false});
+            this.setState({tableData:projectsToSave,loading:false});
         })
         .catch((error) => {
             console.log('Error getting documents: ', error);
@@ -86,7 +88,7 @@ export default class TableWrapper extends Component {
     }
 
     render() {
-        const {projects, loading} = this.state;
+        const {tableData, loading} = this.state;
         let body;
 
         if(loading){
@@ -100,7 +102,7 @@ export default class TableWrapper extends Component {
                         title='Proyectos'
                         highlightOnHover={true}
                         columns={columns}
-                        data={projects}
+                        data={tableData}
                     />;
         }
 
