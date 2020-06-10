@@ -11,7 +11,7 @@ const db = firebase.firestore();
 // settear fields a vacio
 function done(){
     alert("Administrador registrado"); 
-    
+    window.location.reload();
 }
 
 
