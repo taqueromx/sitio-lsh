@@ -21,6 +21,7 @@ function pushToFirebase(props){
     db.collection("admin").doc().set({
         nombre: props.nombre,
         email: props.email,
+        tipo: 'Admin',
         contrasena: props.contrasena,
     })
     .then(function() {

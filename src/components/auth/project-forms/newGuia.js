@@ -60,6 +60,7 @@ function pushToFirebase(props){
         matricula: props.matricula,
         semestre: props.semestre,
         carrera: props.carrera,
+        tipo: 'Guia',
         email: props.email,
         tallaPlayera: props.tallaPlayera,
         projects: props.projects,

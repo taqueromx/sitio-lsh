@@ -15,34 +15,26 @@ function SelectView({selectedItem, user}) {
         switch (selectedItem) {
             case 'Proyectos':
                 return <ProjectDisplay/>
-                break;
             case 'Sign Out':
                 return <SignOut />
-                break;
-            case 'Proyectos': //inscripcion del lider o guia
-                return <ProjectDisplay user={user}/>
-                break;
-            case 'Asignación':
-                return <TableWrapper selectedItem={selectedItem}/>
-                break;   
+            // case 'Asignación':
+            //     return;
+            //     break;   
             // case 'Mi Líder':
                 // return <>
                 {/* break */}
-            // case 'Ver Usuarios':
-                // return 
-                // break
-            // case 'Ver Usuarios':
-                // return 
-                // break   
-            //case 'Registrar Usuarios':
-                //return
-                //break   
+            case 'Ver Usuarios':
+                return <TableWrapper selectedItem={selectedItem}/>
+            case 'Registrar Usuarios':
+                return <NewLider/>; 
+            case 'Todos los Proyectos':
+                return <TableWrapper selectedItem={selectedItem}/>;
             case 'Registrar Proyectos':
                // return <NewProject/>
                 //return <NewLider/>
-                //return <NewGuia/>
-                return <NewAdmin/>
-                break   
+                // return <NewGuia/>
+                // return <NewAdmin/>
+                return <NewProject/>;
             default:
                 return <PostDisplay />   
         }
