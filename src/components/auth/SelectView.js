@@ -16,7 +16,8 @@ function SelectView({selectedItem, user}) {
         switch (selectedItem) {
             case 'Proyectos':
                 return <ProjectDisplay/>
-            case 'Sign Out':
+                break;
+            case 'SignOut':
                 return <SignOut />
             // case 'Asignación':
             //     return;

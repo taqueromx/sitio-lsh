@@ -4,6 +4,9 @@ import { Flex, Box, Heading, Button, Text } from 'rebass'
 import { useAuth } from '../../context/auth-context'
 import history from '../../services/history'
 
+// Hay que revisar si el usuario ya completó su primer setup y si no mandarlo
+const setupInicial = true;
+
 function Home() {
     const { signInWithGoogle } = useAuth()
 
@@ -15,7 +18,12 @@ function Home() {
               console.log(e)
           }
           finally {
-            history.push('/dashboard')
+            if (setupInicial) {// si ya llenó sus datos al dashboard, si no, al registro
+                history.push('/dashboard')
+            }
+            else {
+                history.push('/setup')
+            }
           }
     }
   
