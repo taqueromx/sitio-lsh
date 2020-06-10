@@ -32,14 +32,14 @@ function componentDidMount(userActual){
         });
     }).then( () =>{
         aux = userData; 
-        console.log("userData: ", userData); 
+        //console.log("userData: ", userData); 
         return userData; 
     })
     .catch(function(error) {
         console.log('Error getting doccuments: ', error);
     })
 
-    console.log("userData from func: ", userData); 
+    //console.log("userData from func: ", userData); 
     return userData; 
 }
 
