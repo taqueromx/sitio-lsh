@@ -7,8 +7,6 @@ export const ProjectCard = ({project, enrollInProject, firstTime, userType}) => 
     let body, footer;
 
     if(userType === 'guia' && project.body.lideresAsignados !== undefined){
-        console.log(project.body);
-        debugger;
         footer = <Box width={1} px={2}>
                     <Label>Lideres asignados: </Label>
                     <Text>{'Nombre: '+project.body.lideresAsignados[0]}</Text>
