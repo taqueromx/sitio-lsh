@@ -2,56 +2,58 @@ import React from 'react';
 import { Card, Heading, Text, Flex, Box, Button } from 'rebass';
 import { Label, Input } from '@rebass/forms';
 
-export const ProjectCard = (props) => {
+export const ProjectCard = ({project, enrollInProject}) => {
     return ( 
         <Card>
                 <Box width={1} px={2} mb={2}>
-                    <Heading>{props.project.nombre}</Heading>
+                    <Heading>{project.body.nombre}</Heading>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='socialCause'>Causa Social:</Label>
-                    <Text id='socialCause'>{props.project.causaSocial}</Text>
+                    <Text id='socialCause'>{project.body.causaSocial}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='objective'>Objetivo:</Label>
-                    <Text id='objective'>{props.project.objetivo}</Text>
+                    <Text id='objective'>{project.body.objetivo}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='institution'>Institucion:</Label>
-                    <Text id='institution'>{props.project.institucion}</Text>
+                    <Text id='institution'>{project.body.institucion}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='location'>Direccion:</Label>
-                    <Text id='location'>{props.project.direccion}</Text>
+                    <Text id='location'>{project.body.direccion}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='frecuency'>Frecuencia:</Label>
-                    <Text id='frecuency'>{props.project.dias}.</Text>
+                    <Text id='frecuency'>{project.body.dias}.</Text>
                 </Box>
                 <Flex mx={-2} mb={3}>
                     <Box width={1/2} px={2}>
                         <Label htmlFor='startingDate'>Fecha de Inicio:</Label>
                         <Input 
-                            id='startingDate'
                             name='startingDate'
                             type='text'
-                            value={props.project.fecheInicio}
+                            value={project.body.fecheInicio}
                             disabled={true}
                         />
                     </Box>
                     <Box width={1/2} px={2}>
                         <Label htmlFor='endDate'>Fecha de Cierre:</Label>
                         <Input 
-                            id='endDate'
                             name='endDate'
                             type='text'
-                            value={props.project.fechaCierre}
+                            value={project.body.fechaCierre}
                             disabled={true}
                         />
                     </Box>
                 </Flex>
                 <Box width={1} px={2}>
-                    <Button variant='primary' className='button-width'>Inscribir</Button>
+                    <Button 
+                        variant='primary' 
+                        className='button-width' 
+                        onClick={enrollInProject(project.id)}>Inscribir
+                    </Button>
                 </Box>
             </Card>
      );

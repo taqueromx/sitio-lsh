@@ -9,6 +9,8 @@ export default class ProjectDisplay extends Component {
     constructor(props) {
         super(props);
 
+        this.enrollInProject = this.enrollInProject.bind(this);
+
         this.state = {
             ...this.state,
             projects : {}
@@ -21,7 +23,7 @@ export default class ProjectDisplay extends Component {
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                projectsToSave.push({id:doc.id,project:doc.data()});
+                projectsToSave.push({id:doc.id,body:doc.data()});
             });
         }).then(() => {
             this.setState({projects : projectsToSave});
@@ -31,10 +33,15 @@ export default class ProjectDisplay extends Component {
         });
     }
 
+    enrollInProject = (projectId) => {
+        console.log('User id: ' + this.props.user.uid);
+        console.log('Project id: ' + projectId);
+    }
+
     render() {
         const {projects} = this.state;
         return (
-            <CardList projects={projects}/>
+            <CardList projects={projects} enrollInProject={this.enrollInProject}/>
         )
     }
 }
