@@ -1,0 +1,100 @@
+.container{
+    padding-right: 2%;
+    border: 1px solid #777;
+    width: 33%;
+    min-width: 350px;
+    padding-left: 1%;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-left: 2%;
+}
+.formLol{
+    width: 100%;
+}
+
+.formTitle{
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+}
+.formSubTitle{
+    font-weight: lighter;
+    font-size: large;;
+    text-align: left;;
+}
+
+.error {
+    padding: 0.5rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 1px solid red;
+    border-radius: 6px;
+    margin: 0.5rem 0 0 0;
+}
+#feedback{
+    padding: 0.5rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 1px solid red;
+    border-radius: 6px;
+    margin: 0.5rem 0 0 0;
+    width: 100%;
+}
+
+.row {
+    padding: 0.5rem 0;
+}
+.rowMid {
+    padding: 0.5rem 0;
+    padding-right: 19%;
+    padding-left: 13%;
+}
+.assignedProjecys{
+    border-radius: 6px;
+    border: 1px solid #777;
+    padding: 4px;
+}
+
+.input {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #777;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+.datepicker {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #777;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+.rowP{
+    padding-top: 6%;
+    font-weight: bold; ;
+}
+.btnAddProject{
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #3576d6c7;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(22, 24, 26, 0.15);
+
+}
+
+.submit {
+    padding: 0.5rem 0;
+    background-color: #00a6ff;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(22, 24, 26, 0.15);
+
+    &.disabled {
+        background-color: #e6e6e6;
+        color: #292929;
+        box-shadow: inherit;
+    }
+}

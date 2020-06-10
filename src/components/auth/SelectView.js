@@ -4,6 +4,11 @@ import ProjectDisplay from './project-display/project-display-wrapper.component'
 import { PostDisplay } from './post-display/postWrapper.component'
 import SignOut from './SignOut'
 
+import NewProject from './project-forms/newProject'
+import NewLider from './project-forms/newLider'
+import NewGuia from './project-forms/newGuia'
+import NewAdmin from './project-forms/newAdmin'
+
 
 function SelectView({selectedItem, user}) {
         switch (selectedItem) {
@@ -28,15 +33,15 @@ function SelectView({selectedItem, user}) {
             // case 'Ver Usuarios':
                 // return 
                 // break   
-            // case 'Registrar Usuarios':
-            //     return
-            //     break   
-            // case 'Todos los Proyectos':
-            //     return
-            //     break   
-            // case 'Registrar Proyectos':
-            //     return
-            //     break   
+            //case 'Registrar Usuarios':
+                //return
+                //break   
+            case 'Registrar Proyectos':
+               // return <NewProject/>
+                //return <NewLider/>
+                //return <NewGuia/>
+                return <NewAdmin/>
+                break   
             default:
                 return <PostDisplay />   
         }
