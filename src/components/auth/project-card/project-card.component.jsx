@@ -2,9 +2,26 @@ import React from 'react';
 import { Card, Heading, Text, Flex, Box, Button } from 'rebass';
 import { Label, Input } from '@rebass/forms';
 
-export const ProjectCard = ({project, enrollInProject, firstTime}) => {
+export const ProjectCard = ({project, enrollInProject, firstTime, userType}) => {
 
-    let body;
+    let body, footer;
+
+    if(userType === 'guia' && project.body.lideresAsignados !== undefined){
+        console.log(project.body);
+        debugger;
+        footer = <Box width={1} px={2}>
+                    <Label>Lideres asignados: </Label>
+                    <Text>{project.body.lideresAsignados[0]}</Text>
+                </Box>;
+    }else if(userType === 'lider' && project.body.guiaAsignados !== undefined){
+        footer = <Box width={1} px={2}>
+                    <Label>Guia Asignado: </Label>
+                    <Text>{project.body.guiaAsignados[0]}</Text>
+                </Box>;
+    }else{
+        footer = <Box></Box>;
+    }
+
     if(firstTime){
         body = <Box width={1} px={2}>
                     <Button 
@@ -56,6 +73,7 @@ export const ProjectCard = ({project, enrollInProject, firstTime}) => {
                     </Box>
                 </Flex>
                 {body}
+                {footer}
             </Card>
      );
 }

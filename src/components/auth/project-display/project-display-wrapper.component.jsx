@@ -48,11 +48,41 @@ export default class ProjectDisplay extends Component {
         
     }
 
+    saveUserDataInProjectDocument = () => {
+        let user = this.props.user.userData;
+        console.log(user);
+        debugger;
+        /*db.collection('projects').doc(projectId)
+        .update({
+            lideresAsignados: firebase.firestore.FieldValue.arrayUnion('newItem')
+        })
+        .then(() => {
+            window.location.reload();
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });*/
+    }
+
     enrollInProject = (projectId) => {
         let userId = this.props.user.userDataId;
+        let user = this.props.user.userData;
         db.collection('usuarios').doc(userId)
         .update({
             proyectoAsignado: projectId
+        })
+        .then(() => {
+            if(user.tipoUsuario === 'lider'){
+                db.collection('projects').doc(projectId)
+                .update({
+                    lideresAsignados:firebase.firestore.FieldValue.arrayUnion(user.nombre,user.matricula)
+                })
+            }else{
+                db.collection('projects').doc(projectId)
+                .update({
+                    guiaAsignado:firebase.firestore.FieldValue.arrayUnion(user.nombre,user.matricula)
+                })
+            }
         })
         .then(() => {
             window.location.reload();
@@ -63,13 +93,14 @@ export default class ProjectDisplay extends Component {
     }
 
     render() {
+        const {tipoUsuario} = this.props.user.userData;
         const {projects,firstTime,proyectoAsignado} = this.state;
         let body;
 
         if(firstTime){
             body = <CardList projects={projects} enrollInProject={this.enrollInProject.bind(this)} firstTime={firstTime}/>;
         }else{
-            body = <ProjectCard project={proyectoAsignado} firstTime={firstTime}/>
+            body = <ProjectCard project={proyectoAsignado} firstTime={firstTime} userType={tipoUsuario}/>
         }
 
         return (
