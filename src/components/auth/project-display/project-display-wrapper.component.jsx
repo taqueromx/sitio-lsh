@@ -9,8 +9,6 @@ export default class ProjectDisplay extends Component {
     constructor(props) {
         super(props);
 
-        this.enrollInProject = this.enrollInProject.bind(this);
-
         this.state = {
             ...this.state,
             projects : {}
@@ -41,7 +39,7 @@ export default class ProjectDisplay extends Component {
     render() {
         const {projects} = this.state;
         return (
-            <CardList projects={projects} enrollInProject={this.enrollInProject}/>
+            <CardList projects={projects} enrollInProject={this.enrollInProject.bind(this)}/>
         )
     }
 }

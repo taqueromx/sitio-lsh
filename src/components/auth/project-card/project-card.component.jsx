@@ -52,7 +52,7 @@ export const ProjectCard = ({project, enrollInProject}) => {
                     <Button 
                         variant='primary' 
                         className='button-width' 
-                        onClick={enrollInProject(project.id)}>Inscribir
+                        onClick={() => enrollInProject(project.id)}>Inscribir
                     </Button>
                 </Box>
             </Card>
