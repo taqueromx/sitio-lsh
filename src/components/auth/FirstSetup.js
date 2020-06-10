@@ -15,7 +15,6 @@ const BlueFlex = styled(Flex)`
     background: #f6f6f6;
 
 `
-
 const Header = styled.h1`
     color:black;
 `

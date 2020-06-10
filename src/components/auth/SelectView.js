@@ -23,22 +23,22 @@ function SelectView({selectedItem, user}) {
                 return <ProjectDisplay user={user}/>
             // case 'Mi Líder':
                 // return <>
-                {/* break */}
+                /* break */
             case 'Ver Usuarios':
                 return <TableWrapper selectedItem={selectedItem}/>
-                break
+    
             case 'Registrar Líder':
                 return <NewLider/>; 
-                break
+
             case 'Todos los Proyectos':
                 return <TableWrapper selectedItem={selectedItem}/>;
-                break
+         
             case 'Registrar Proyectos':
                 return <NewProject/>
-                break
+       
             case 'Registrar Guía':
                 return <NewGuia/>
-                break
+            
             case 'Registrar Admin':
                 return <NewAdmin/>
                 break 

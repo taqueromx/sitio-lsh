@@ -30,7 +30,7 @@ function componentDidMount(userActual){
         });
     }).then( () =>{
         aux = userData; 
-        console.log("userData: ", userData); 
+        //console.log("userData: ", userData); 
         return userData; 
     })
     .catch(function(error) {
@@ -72,7 +72,7 @@ function UpdateUser(){
     let carrera = userActual.carrera
     let tipoUsuario = userActual.tipoUsuario
 
-    console.log("userActual:", userActual);
+  //  console.log("userActual:", userActual);
 
     let arr = componentDidMount(userActual); 
 
@@ -83,7 +83,7 @@ function UpdateUser(){
     let admin = componentDidMountPassword(userActual); 
 
     ///
-    console.log("admin 2 ", admin); 
+    //console.log("admin 2 ", admin); 
     if(admin){
         return(
             <div>
