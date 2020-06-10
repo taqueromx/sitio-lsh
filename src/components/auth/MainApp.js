@@ -12,6 +12,7 @@ import { PostDisplay } from './post-display/postWrapper.component'
 import SelectView from './SelectView'
 
 const firebase = require('firebase');
+const db = firebase.firestore();
 
 const styles = StyleSheet.create({
     container: {
@@ -39,10 +40,28 @@ class App extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        const user = firebase.auth().currentUser;
-        this.setState({
-            user : user
+        let user = firebase.auth().currentUser;
+        let userData;
+
+        db.collection('usuarios').where('uid', '==', user.uid)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                let userBodyData = doc.data();
+                userData = {userDataId:doc.id,userData:userBodyData};
+            });
+        })
+        .then(() => {
+            this.setState({
+                user : {...user,...userData}
+            });
+            console.log(this.state.user);
+        })
+        .catch(function(error) {
+            console.log('Error getting documents: ', error);
         });
+
+        
     }
 
     componentWillUnmount() {
