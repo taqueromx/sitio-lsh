@@ -60,6 +60,8 @@ function pushToFirebase(props){
         carrera: props.carrera,
         email: props.email,
         tipoUsuario: props.tipoUsuario,
+        uid: props.uid,
+        registroCompletado: props.registroCompletado
     })
     .then(function() {
         console.log("Lider registrado!");
@@ -134,7 +136,8 @@ export default class NewUser extends Component{
                     carrera:'',
                     email: this.props.email,
                     tipoUsuario: 'guia',
-                    uid: this.props.uid
+                    uid: this.props.uid,
+                    registroCompletado: true
                 }}
                 
                 onSubmit = {
