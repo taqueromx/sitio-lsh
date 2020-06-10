@@ -11,7 +11,7 @@ function SelectView({selectedItem, user}) {
             case 'Proyectos':
                 return <ProjectDisplay/>
                 break;
-            case 'Sign Out':
+            case 'SignOut':
                 return <SignOut />
                 break;
             case 'Proyectos': //inscripcion del lider o guia

@@ -1,13 +1,27 @@
 import React from 'react'
+import { Flex } from 'rebass'
+import styled from 'styled-components'
 
+const BlueFlex = styled(Flex)`
+    background: #282C34;
+
+`
+
+const Header = styled.h1`
+    color:white;
+`
 function FirstSetup() {
     return (
-        <div>
-            <h1>Llena tus datos</h1>
-            <p>Blablabla</p>
-        </div>
-    ) 
-    // Al final agarrar el user y mandar los datos de este form a la base de datos
+        <BlueFlex
+        justifyContent='center'
+        alignItems='center'
+        height= '100vh'
+        flexDirection='column'
+            >
+        <Header>Llena tus datos para comenzar</Header>
+        <p>Tipo de líder</p>
+        </BlueFlex>
+    )
 }
 
 export default FirstSetup

@@ -5,7 +5,7 @@ import { useAuth } from '../../context/auth-context'
 import history from '../../services/history'
 
 // Hay que revisar si el usuario ya completó su primer setup y si no mandarlo
-const setupInicial = false;
+const setupInicial = true;
 
 function Home() {
     const { signInWithGoogle } = useAuth()
