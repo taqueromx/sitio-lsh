@@ -2,7 +2,22 @@ import React from 'react';
 import { Card, Heading, Text, Flex, Box, Button } from 'rebass';
 import { Label, Input } from '@rebass/forms';
 
-export const ProjectCard = ({project, enrollInProject}) => {
+export const ProjectCard = ({project, enrollInProject, firstTime}) => {
+
+    let body;
+    if(firstTime){
+        body = <Box width={1} px={2}>
+                    <Button 
+                        variant='primary' 
+                        className='button-width' 
+                        onClick={() => enrollInProject(project.id)}>Inscribir
+                    </Button>
+                </Box>;
+    }else{
+        body = <Box>
+                </Box>;
+    }
+
     return ( 
         <Card>
                 <Box width={1} px={2} mb={2}>
@@ -40,13 +55,7 @@ export const ProjectCard = ({project, enrollInProject}) => {
                         />
                     </Box>
                 </Flex>
-                <Box width={1} px={2}>
-                    <Button 
-                        variant='primary' 
-                        className='button-width' 
-                        onClick={() => enrollInProject(project.id)}>Inscribir
-                    </Button>
-                </Box>
+                {body}
             </Card>
      );
 }

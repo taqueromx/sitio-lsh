@@ -4,7 +4,7 @@ import { ProjectCard } from '../project-card/project-card.component';
 
 import './project-list.style.css';
 
-export const CardList = ({projects, enrollInProject}) => (
+export const CardList = ({projects, enrollInProject, firstTime}) => (
     <Box 
         sx={{
             display: 'grid',
@@ -17,6 +17,7 @@ export const CardList = ({projects, enrollInProject}) => (
                 key={projects[key].id} 
                 project={projects[key]} 
                 enrollInProject={enrollInProject}
+                firstTime={firstTime}
                 />
         ))}
     </Box>
