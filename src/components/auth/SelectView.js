@@ -3,22 +3,23 @@ import React from 'react'
 import ProjectDisplay from './project-display/project-display-wrapper.component'
 import { PostDisplay } from './post-display/postWrapper.component'
 import SignOut from './SignOut'
+import TableWrapper from './table-wrapper/table-wrapper.component'
 
 
 function SelectView({selectedItem, user}) {
         switch (selectedItem) {
             case 'Proyectos':
                 return <ProjectDisplay/>
-                break
+                break;
             case 'Sign Out':
                 return <SignOut />
-                break
+                break;
             case 'Proyectos': //inscripcion del lider o guia
                 return <ProjectDisplay user={user}/>
-                break
-            // case 'Asignación':
-                // return <ProjectDisplay/>
-                // break   
+                break;
+            case 'Asignación':
+                return <TableWrapper selectedItem={selectedItem}/>
+                break;   
             // case 'Mi Líder':
                 // return <>
                 {/* break */}

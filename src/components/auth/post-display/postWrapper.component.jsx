@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { PostList } from "../post-view/post-view.component";
+import PostMockup from "../post-mockup/post-mockup.component";
+import { Flex, Box } from 'rebass';
 
 const firebase = require('firebase');
 const db = firebase.firestore();
@@ -34,7 +36,18 @@ export class PostDisplay extends Component {
     render() {
         const {posts} = this.state;
         return(
-            <PostList posts={posts}/>
+            <Box sx={{
+                display: 'grid',
+                gridGap: 4,    
+                gridTemplateColumns: 'repeat(1, minmax(128px, 1fr))',
+            }}>
+                <Box>
+                    <PostList posts={posts}/>
+                </Box>
+                <Box className='center'>
+                    <PostMockup />
+                </Box>
+            </Box>
         )
     }
 } 
