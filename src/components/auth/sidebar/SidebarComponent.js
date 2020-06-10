@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 })
 
 // Hay que reemplazar esto con el usuario obtenido de la db
-const user = 'lider'
+const user = 'admin'
 
 class SidebarComponent extends React.Component {
 
