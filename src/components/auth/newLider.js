@@ -42,7 +42,7 @@ function componentDidMount() {
 // settear fields a vacio
 function done(){
     alert("Lider Registrado"); 
-    
+    window.location.reload();
 }
 
 const aux = componentDidMount();
@@ -102,6 +102,8 @@ const FormValidation = object().shape({
         .required("email es requerido"),
     tallaPlayera: string()
         .required("tallaPlayera es requerido"),
+    projects: string()
+        .required("projects es requerido"),
 }); 
 
 function getSelected(props){
@@ -238,7 +240,7 @@ const NewLider = () => (
                                            //onChange={handleChange}
                                         />
                                     </div>
-                                    <div className="rowMid">
+                                  {/*}  <div className="rowMid">
                                         <div 
                                             className={"btnAddProject"}  
                                           //  onClick= {getSelected2}
@@ -248,7 +250,7 @@ const NewLider = () => (
                                         </div>
                                         
                                     </div>
-                                   
+                                    {*/}
                                 </div>
                                 <div className="row">
                                     <button type="submit" className="submit" >
