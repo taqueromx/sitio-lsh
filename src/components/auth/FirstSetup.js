@@ -15,7 +15,6 @@ const BlueFlex = styled(Flex)`
     background: #f6f6f6;
 
 `
-
 const Header = styled.h1`
     color:black;
 `
@@ -38,7 +37,8 @@ function FirstSetup() {
             });
         }).then( () =>{
             //history.push('/dashboard')
-            console.log(registroCompletado)
+            // console.log('qp', registroCompletado)
+
             if (registroCompletado) {
                 history.push('/dashboard')
             }
