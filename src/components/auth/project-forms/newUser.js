@@ -4,7 +4,6 @@ import '../../../styles/styleFormP.scss';
 
 
 import { object, string, number} from 'yup';
-import FormikAutoComplete from './FormikAutocomplete '
 
 const firebase = require('firebase');
 const db = firebase.firestore();
@@ -40,7 +39,7 @@ function componentDidMount() {
 // Funcion para alert de guia registrado
 // settear fields a vacio
 function done(){
-    alert("Lider Registrado"); 
+    alert("Usuario Registrado"); 
     window.location.reload();
 }
 
@@ -52,7 +51,7 @@ function loadProjectsToArr(){
 
 
 function pushToFirebase(props){
-    db.collection("lideres").doc().set({
+    db.collection("usuarios").doc().set({
         nombre: props.nombre,
         apellidoPaterno: props.apellidoPaterno,
         apellidoMaterno: props.apellidoMaterno,
@@ -60,8 +59,7 @@ function pushToFirebase(props){
         semestre: props.semestre,
         carrera: props.carrera,
         email: props.email,
-        tallaPlayera: props.tallaPlayera,
-        projects: props.projects,
+        tipoUsuario: props.tipoUsuario,
     })
     .then(function() {
         console.log("Lider registrado!");
@@ -99,10 +97,8 @@ const FormValidation = object().shape({
         .max(6, 'Solo indica las siglas de la carrera'),
     email: string()
         .required("email es requerido"),
-    tallaPlayera: string()
-        .required("tallaPlayera es requerido"),
-    projects: string()
-        .required("projects es requerido"),
+    tipoUsuario: string()
+        .required("usuario es requerido"),
 }); 
 
 function getSelected(props){
@@ -122,7 +118,7 @@ const proyectosAsignados = props => (
     </div>
 );
 
-export default class NewLider extends Component{
+export default class NewUser extends Component{
     render(){
         return (
             <Formik 
@@ -134,8 +130,7 @@ export default class NewLider extends Component{
                     semestre: '',
                     carrera:'',
                     email: '',
-                    tallaPlayera: 'C',
-                    projects: '',
+                    tipoUsuario: 'guia',
                 }}
                 
                 onSubmit = {
@@ -153,7 +148,7 @@ export default class NewLider extends Component{
                         <div className="container">
                             <Form >
                                 <div className="formTitle">
-                                    Registrar Lider
+                                    Registrar usuario nuevo
                                 </div>
                                 <div className="row">
                                     Nombre:
@@ -206,49 +201,15 @@ export default class NewLider extends Component{
                                 </div>
                                 
                                 <div className="row">
-                                    Talla Playera:
+                                    Tipo de Usuario: 
                                     <Field 
-                                        name="tallaPlayera"
+                                        name="tipoUsuario"
                                         as="select"
+                                        className="formSubTitle"
                                     >
-                                        <option  value="small">C</option>
-                                        <option  value="medium">M</option>
-                                        <option  value="big">G</option>
+                                        <option  value="lider">Lider</option>
+                                        <option  value="guia">Guia</option>
                                     </Field>
-                                
-                                </div>
-                                <div className="row">
-                                    <div className="formSubTitle">Proyectos Asignados:</div>
-                                    <div className="AssignedProjects">
-                                        {/*  Aqui deben aparecer proyectos seleccionados   */}
-                                        
-                                    
-                                    </div>
-                                   
-                                    <div className="assignedProjecys">
-                                        Nombre:
-                                        <Field 
-                                            name="projects" 
-                                            className="input" 
-                                            component={FormikAutoComplete}
-                                            options= {aux}
-                                            onClick={loadProjectsToArr}
-                                            //onChange={val => getSelected(val)}
-                                           // onSelect={val => proyectosAsignados(val)}
-                                           //onChange={handleChange}
-                                        />
-                                    </div>
-                                  {/*}  <div className="rowMid">
-                                        <div 
-                                            className={"btnAddProject"}  
-                                          //  onClick= {getSelected2}
-                                        
-                                        >
-                                            Agregar Proyecto
-                                        </div>
-                                        
-                                    </div>
-                                    {*/}
                                 </div>
                                 <div className="row">
                                     <button type="submit" className="submit" >
