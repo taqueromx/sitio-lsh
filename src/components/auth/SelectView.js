@@ -4,17 +4,43 @@ import ProjectDisplay from './project-display/project-display-wrapper.component'
 import { PostDisplay } from './post-display/postWrapper.component'
 import SignOut from './SignOut'
 
-import { Select } from '@rebass/forms';
-
 
 function SelectView(props) {
         const selectedItem  = props.menu;
-        if (selectedItem === 'Proyectos'){
-            return <ProjectDisplay/>
+        switch (selectedItem) {
+            case 'Proyectos':
+                return <ProjectDisplay/>
+                break
+            case 'Sign Out':
+                return <SignOut />
+                break
+            case 'Proyectos': //inscripcion del lider o guia
+                return <ProjectDisplay/>
+                break
+            // case 'Asignación':
+                // return <ProjectDisplay/>
+                // break   
+            // case 'Mi Líder':
+                // return <>
+                {/* break */}
+            // case 'Ver Usuarios':
+                // return 
+                // break
+            // case 'Ver Usuarios':
+                // return 
+                // break   
+            // case 'Registrar Usuarios':
+            //     return
+            //     break   
+            // case 'Todos los Proyectos':
+            //     return
+            //     break   
+            // case 'Registrar Proyectos':
+            //     return
+            //     break   
+            default:
+                return <PostDisplay />   
         }
-        else if (selectedItem === 'SignOut')
-            return <SignOut />
-        else return <PostDisplay />
 }
 
 export default SelectView

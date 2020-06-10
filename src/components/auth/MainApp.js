@@ -32,7 +32,7 @@ class App extends React.Component {
         super();
 
         this.state = {
-            selectedItem : 'Overview',
+            selectedItem : 'Resumen',
             user : {}
         }
     }
@@ -63,7 +63,7 @@ class App extends React.Component {
                         user={user}
                         />
                     <div className={css(styles.content)}>
-                        {console.log('mainapp', this.state.selectedItem)}
+
                         <SelectView menu={this.state.selectedItem}/>
 
                     </div>
