@@ -80,6 +80,7 @@ const db = firebase.firestore();
 
 
 // Hay que reemplazar esto con el usuario obtenido de la db
+const user = 'admin'
 
 let userData = {
     userData: {

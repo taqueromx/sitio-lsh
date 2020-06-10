@@ -9,7 +9,8 @@ import NewProject from './project-forms/newProject'
 import NewLider from './project-forms/newLider'
 import NewGuia from './project-forms/newGuia'
 import NewAdmin from './project-forms/newAdmin'
-// import NewUser from'./project-forms/newUser'
+import NewUser from'./project-forms/newUser'
+import EditUser from './project-forms/editUser'
 
 
 function SelectView({selectedItem, user}) {
@@ -40,7 +41,10 @@ function SelectView({selectedItem, user}) {
             
             case 'Registrar Admin':
                 return <NewAdmin/>
-    
+                break 
+            case 'Settings':
+                return <EditUser/>
+                break   
             default:
                 return <PostDisplay />   
         }

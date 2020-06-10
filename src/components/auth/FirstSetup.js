@@ -37,8 +37,7 @@ function FirstSetup() {
             });
         }).then( () =>{
             //history.push('/dashboard')
-            // console.log('qp', registroCompletado)
-
+            //console.log(registroCompletado)
             if (registroCompletado) {
                 history.push('/dashboard')
             }
