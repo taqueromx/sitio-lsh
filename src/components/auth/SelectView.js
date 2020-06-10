@@ -5,8 +5,7 @@ import { PostDisplay } from './post-display/postWrapper.component'
 import SignOut from './SignOut'
 
 
-function SelectView(props) {
-        const selectedItem  = props.menu;
+function SelectView({selectedItem, user}) {
         switch (selectedItem) {
             case 'Proyectos':
                 return <ProjectDisplay/>
@@ -15,7 +14,7 @@ function SelectView(props) {
                 return <SignOut />
                 break
             case 'Proyectos': //inscripcion del lider o guia
-                return <ProjectDisplay/>
+                return <ProjectDisplay user={user}/>
                 break
             // case 'Asignación':
                 // return <ProjectDisplay/>

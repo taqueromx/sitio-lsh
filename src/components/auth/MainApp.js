@@ -64,7 +64,10 @@ class App extends React.Component {
                         />
                     <div className={css(styles.content)}>
 
-                        <SelectView menu={this.state.selectedItem}/>
+                        <SelectView 
+                            selectedItem={this.state.selectedItem}
+                            user={this.state.user}
+                            />
 
                     </div>
                 </Column>
