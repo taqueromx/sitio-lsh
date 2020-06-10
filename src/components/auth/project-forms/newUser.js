@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, Form, Formik} from 'formik';
 import '../../../styles/styleFormP.scss'; 
-
+import history from '../../../services/history'
 
 import { object, string, number} from 'yup';
 
@@ -65,6 +65,7 @@ function pushToFirebase(props){
     })
     .then(function() {
         console.log("Lider registrado!");
+        history.push('/dashboard')
         done();
     })
     .catch(function(error){
