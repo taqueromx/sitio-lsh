@@ -5,6 +5,7 @@ import Route from './Route'
 
 import About from '../../components/not_auth/About'
 import MainApp from '../../components/auth/MainApp'
+import FirstSetup from '../../components/auth/FirstSetup'
 
 export default function Routes() {
   return (
@@ -12,6 +13,7 @@ export default function Routes() {
       <Route path="/" exact component={MainApp} />
       <Route path="/about" component={About} />
       <Route path="/dashboard" component={MainApp} />
+      <Route path="/setup" component={FirstSetup} />
       {/* <Route path="/profile" component={Profile} /> */}
 
       {/* redirect user to Dashboard if route does not exist */}
