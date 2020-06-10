@@ -9,6 +9,8 @@ import HeaderComponent from './header/HeaderComponent'
 import ProjectDisplay from './project-display/project-display-wrapper.component'
 import { PostDisplay } from './post-display/postWrapper.component'
 
+import SelectView from './SelectView'
+
 const firebase = require('firebase');
 
 const styles = StyleSheet.create({
@@ -30,7 +32,7 @@ class App extends React.Component {
         super();
 
         this.state = {
-            selectedItem : 'Overview',
+            selectedItem : 'Resumen',
             user : {}
         }
     }
@@ -61,7 +63,9 @@ class App extends React.Component {
                         user={user}
                         />
                     <div className={css(styles.content)}>
-                        <ProjectDisplay user={this.state.user}/>
+
+                        <SelectView menu={this.state.selectedItem}/>
+
                     </div>
                 </Column>
             </Row>

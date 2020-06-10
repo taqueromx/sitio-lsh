@@ -72,7 +72,12 @@ const styles = StyleSheet.create({
     }
 })
 
+// Hay que reemplazar esto con el usuario obtenido de la db
+const user = 'lider'
+
 class SidebarComponent extends React.Component {
+
+    
 
     state = { expanded: false };
 
@@ -90,6 +95,61 @@ class SidebarComponent extends React.Component {
             <IconBurger />
         </div>
     }
+    
+  
+
+    basic = () => {
+        return (
+        <>
+        <MenuItemComponent
+            title="Resumen" icon={IconOverview}
+            onClick={() => this.onItemClicked("Resumen")}
+            active={this.props.selectedItem === ("Resumen")}
+        />
+        <MenuItemComponent
+            title="Proyectos" icon={IconTickets}
+            onClick={() => this.onItemClicked('Proyectos')}
+            active={this.props.selectedItem === 'Proyectos'}
+        />
+        <MenuItemComponent
+            title="Asignación" icon={IconIdeas}
+            onClick={() => this.onItemClicked('Asignación')}
+            active={this.props.selectedItem === 'Asignación'} />
+        <MenuItemComponent
+            title="Mi Líder" icon={IconContacts}
+            onClick={() => this.onItemClicked('Mi Líder')}
+            active={this.props.selectedItem === 'Mi Líder'} />
+        </>)
+    }
+
+    admin = () => {
+        return (
+            <>
+            <MenuItemComponent
+                title="Resumen" icon={IconOverview}
+                onClick={() => this.onItemClicked("Resumen")}
+                active={this.props.selectedItem === ("Resumen")}
+            />
+            <MenuItemComponent
+                title="Ver Usuarios" icon={IconTickets}
+                onClick={() => this.onItemClicked('Ver Usuarios')}
+                active={this.props.selectedItem === 'Ver Usuarios'}
+            />
+            <MenuItemComponent
+                title="Registrar Usuarios" icon={IconIdeas}
+                onClick={() => this.onItemClicked('Registrar Usuarios')}
+                active={this.props.selectedItem === 'Registrar Usuarios'} />
+            <MenuItemComponent
+                title="Todos los Proyectos" icon={IconContacts}
+                onClick={() => this.onItemClicked('Todos los Proyectos')}
+                active={this.props.selectedItem === 'Todos los Proyectos'} />
+            <MenuItemComponent
+                title="Registrar Proyectos" icon={IconContacts}
+                onClick={() => this.onItemClicked('Registrar Proyectos')}
+                active={this.props.selectedItem === 'Registrar Proyectos'} />
+            </>)
+    }
+
 
     render() {
         const { expanded } = this.state;
@@ -101,41 +161,19 @@ class SidebarComponent extends React.Component {
                     <Column className={css(styles.container)} breakpoints={{ 768: css(styles.containerMobile, expanded ? styles.show : styles.hide) }}>
                         <LogoComponent />
                         <Column className={css(styles.menuItemList)}>
-                            <MenuItemComponent
-                                title="Overview" icon={IconOverview}
-                                onClick={() => this.onItemClicked('Overview')}
-                                active={this.props.selectedItem === 'Overview'}
-                            />
-                            <MenuItemComponent
-                                title="Proyectos" icon={IconTickets}
-                                onClick={() => this.onItemClicked('Proyectos')}
-                                active={this.props.selectedItem === 'Proyectos'}
-                            />
-                            <MenuItemComponent
-                                title="Ideas" icon={IconIdeas}
-                                onClick={() => this.onItemClicked('Ideas')}
-                                active={this.props.selectedItem === 'Ideas'} />
-                            <MenuItemComponent
-                                title="Contacts" icon={IconContacts}
-                                onClick={() => this.onItemClicked('Contacts')}
-                                active={this.props.selectedItem === 'Contacts'} />
-                            <MenuItemComponent
-                                title="Agents" icon={IconAgents}
-                                onClick={() => this.onItemClicked('Agents')}
-                                active={this.props.selectedItem === 'Agents'} />
-                            <MenuItemComponent
-                                title="Articles" icon={IconArticles}
-                                onClick={() => this.onItemClicked('Articles')}
-                                active={this.props.selectedItem === 'Articles'} />
+
+                            { user == 'admin' ? this.admin() : this.basic()}
+
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" icon={IconSettings}
+                                title="Configuración" icon={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
                             <MenuItemComponent
-                                title="Subscription" icon={IconSubscription}
-                                onClick={() => this.onItemClicked('Subscription')}
-                                active={this.props.selectedItem === 'Subscription'} />
+                                title="Cerrar Sesión" icon={IconSubscription}
+                                // onClick={handleSignOut()}
+                                onClick={() => this.onItemClicked('SignOut')}
+                                active={this.props.selectedItem === 'SignOut'} />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}
