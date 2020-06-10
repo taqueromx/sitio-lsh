@@ -6,6 +6,11 @@ import NewUser from './project-forms/newUser'
 
 import { useUser } from '../../context/user-context'
 
+import history from '../../services/history'
+
+const firebase = require('firebase');
+const db = firebase.firestore();
+
 const BlueFlex = styled(Flex)`
     background: #f6f6f6;
 
@@ -23,8 +28,25 @@ function FirstSetup() {
     const apellidoPaterno = fullName[1]
     const apellidoMaterno = fullName[2]
     
+    let registroCompletado = false;
 
-    return (
+        db.collection('usuarios').where('uid', '==', uid)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                registroCompletado = doc.data();
+            })
+        })
+        .catch(function(error) {
+            console.log('Error getting doccuments: ', error);
+        })
+    
+
+    if (registroCompletado) {
+        history.push('/dashboard')
+        return null
+    }
+    else return (
         <BlueFlex
         justifyContent='center'
         alignItems='center'

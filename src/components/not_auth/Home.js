@@ -2,13 +2,16 @@ import React from 'react'
 import { Flex, Box, Heading, Button, Text } from 'rebass'
 
 import { useAuth } from '../../context/auth-context'
+import { useUser } from '../../context/user-context'
 import history from '../../services/history'
-
-// Hay que revisar si el usuario ya completó su primer setup y si no mandarlo
-const setupInicial = false;
 
 function Home() {
     const { signInWithGoogle } = useAuth()
+    
+   
+    // const uid = user.uid
+    // let setupInicial = false;
+
 
     const handleSignIn = () => {
         try {
@@ -18,14 +21,22 @@ function Home() {
               console.log(e)
           }
           finally {
-            if (setupInicial) {// si ya llenó sus datos al dashboard, si no, al registro
-                history.push('/dashboard')
-            }
-            else {
-                history.push('/setup')
-            }
+              history.push('/setup')
           }
+        //   finally {
+
+        //     // db.get(el valor de registroCompletado en la base de datos) y si lo encuentra asignarlo a setupInicial
+            
+        //     if (setupInicial) { // si ya llenó sus datos al dashboard, si no, al registro
+        //         history.push('/dashboard')
+        //     }
+        //     else {
+        //         history.push('/setup')
+        //     }
+        //   }
     }
+
+
   
     return (
             <Box
