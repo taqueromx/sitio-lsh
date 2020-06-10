@@ -15,6 +15,8 @@ import IconSettings from '../../../assets/sidebar-icons/icon-settings'
 import IconSubscription from '../../../assets/sidebar-icons/icon-subscription'
 import IconBurger from '../../../assets/icon-burger'
 
+import { useUser } from '../../../context/user-context'
+
 const styles = StyleSheet.create({
     burgerIcon: {
         cursor: 'pointer',
@@ -72,14 +74,79 @@ const styles = StyleSheet.create({
     }
 })
 
-// Hay que reemplazar esto con el usuario obtenido de la db
-const user = 'lider'
+const firebase = require('firebase');
+const db = firebase.firestore();
 
+
+
+// Hay que reemplazar esto con el usuario obtenido de la db
+
+let userData = {
+    userData: {
+        tipoUsuario: 'lider'
+    }
+}
 class SidebarComponent extends React.Component {
+    constructor(){
+        super();
+
+        this.state = {
+            user : {},
+            expanded: false
+        }
+    }
+
+    componentDidMount() {
+        let user = firebase.auth().currentUser;
+
+
+
+        db.collection('usuarios').where('uid', '==', user.uid)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                let userBodyData = doc.data();
+                userData = {userDataId:doc.id,userData:userBodyData};
+            });
+        
+        })
+        .then(() => {
+            this.setState({
+                user : {...user,...userData}
+            });
+
+        })
+        .catch(function(error) {
+            console.log('Error getting documents: ', error);
+        });
+
+        
+        
+    }
+    
+    
 
     
 
-    state = { expanded: false };
+    // userType = () => {
+    //     db.collection('usuarios').where('email', '==', email)
+    //     .get()
+    //     .then(function(querySnapshot) {
+    //         querySnapshot.forEach(function(doc) {
+    //             user = doc.data();
+    //         });
+    //     }).then( () =>{
+    //         //history.push('/dashboard')
+    //         console.log('qp', user)
+    //         user = user.tipoUsuario
+    //     })
+    //     .catch(function(error) {
+    //         console.log('Error getting doccuments: ', error);
+    //     })
+    // }
+
+
+
 
     onItemClicked = (item) => {
         this.setState({ expanded: false });
@@ -170,7 +237,7 @@ class SidebarComponent extends React.Component {
                         <LogoComponent />
                         <Column className={css(styles.menuItemList)}>
 
-                            { user == 'admin' ? this.admin() : this.basic()}
+                            { userData.userData.tipoUsuario === 'admin' ? this.admin() : this.basic()}
 
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
