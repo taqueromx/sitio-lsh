@@ -12,13 +12,13 @@ export default function PostMockup(props) {
             <Card >
                 <Heading mt={2}>Herramienta Radar</Heading>
                 <Box pl={5} pt={3} pb={3}>
-                    <ReactPlayer url='https://youtu.be/h7RHS1eXvBs' />
+                    <ReactPlayer width='90%' url='https://youtu.be/h7RHS1eXvBs' />
                 </Box>
             </Card>
             <Card>
                 <Heading mt={2}>Servicio Social</Heading>
                 <Box pl={5} pt={3} pb={3}>
-                    <ReactPlayer url='https://youtu.be/Xj9UbWdq9os' />
+                    <ReactPlayer width='90%' url='https://youtu.be/Xj9UbWdq9os' />
                 </Box>
             </Card>
             <Card>
