@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from 'rebass';
-
 import { ProjectCard } from '../project-card/project-card.component';
 
 import './project-list.style.css';
