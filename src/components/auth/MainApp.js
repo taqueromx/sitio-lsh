@@ -61,7 +61,7 @@ class App extends React.Component {
                         user={user}
                         />
                     <div className={css(styles.content)}>
-                        <PostDisplay />
+                        <ProjectDisplay />
                     </div>
                 </Column>
             </Row>

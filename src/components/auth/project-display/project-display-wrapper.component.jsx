@@ -10,6 +10,7 @@ export default class ProjectDisplay extends Component {
         super(props);
 
         this.state = {
+            ...this.state,
             projects : {}
         };
     }
@@ -20,7 +21,7 @@ export default class ProjectDisplay extends Component {
         .get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
-                projectsToSave.push(doc.data());
+                projectsToSave.push({id:doc.id,project:doc.data()});
             });
         }).then(() => {
             this.setState({projects : projectsToSave});
