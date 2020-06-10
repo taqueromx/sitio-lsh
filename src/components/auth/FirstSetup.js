@@ -37,13 +37,16 @@ function FirstSetup() {
                 registroCompletado = doc.data();
             });
         }).then( () =>{
-            history.push('/dashboard')
+            //history.push('/dashboard')
+            console.log(registroCompletado)
+            if (registroCompletado) {
+                history.push('/dashboard')
+            }
         })
         .catch(function(error) {
             console.log('Error getting doccuments: ', error);
         })
     
-
     if (registroCompletado) {
         history.push('/dashboard')
         return null
@@ -59,6 +62,7 @@ function FirstSetup() {
         <NewUser uid={uid} email={email} firstName={firstName} apellidoPaterno={apellidoPaterno} apellidoMaterno={apellidoMaterno} />
         </BlueFlex>
     )
+    
 }
 
 export default FirstSetup
