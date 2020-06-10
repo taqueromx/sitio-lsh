@@ -21,9 +21,6 @@ function SelectView({selectedItem, user}) {
                 return <SignOut />
             case 'Asignación':
                 return <ProjectDisplay user={user}/>
-            // case 'Mi Líder':
-                // return <>
-                /* break */
             case 'Ver Usuarios':
                 return <TableWrapper selectedItem={selectedItem}/>
     
