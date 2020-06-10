@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Heading, Text, Flex, Box, Button } from 'rebass';
+import { Card, Heading, Text, Box } from 'rebass';
 
 export const PostList = props => (
     <Box 
