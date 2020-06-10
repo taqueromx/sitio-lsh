@@ -9,24 +9,16 @@ export const ProjectCard = ({project, enrollInProject}) => {
                     <Heading>{project.body.nombre}</Heading>
                 </Box>
                 <Box width={1} px={2} mb={2}>
-                    <Label htmlFor='socialCause'>Causa Social:</Label>
-                    <Text id='socialCause'>{project.body.causaSocial}</Text>
+                    <Label htmlFor='socialCause'>Organizador:</Label>
+                    <Text id='socialCause'>{project.body.organizador}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
-                    <Label htmlFor='objective'>Objetivo:</Label>
-                    <Text id='objective'>{project.body.objetivo}</Text>
-                </Box>
-                <Box width={1} px={2} mb={2}>
-                    <Label htmlFor='institution'>Institucion:</Label>
-                    <Text id='institution'>{project.body.institucion}</Text>
+                    <Label htmlFor='objective'>Descripcion General:</Label>
+                    <Text id='objective'>{project.body.descripcionGeneral}</Text>
                 </Box>
                 <Box width={1} px={2} mb={2}>
                     <Label htmlFor='location'>Direccion:</Label>
-                    <Text id='location'>{project.body.direccion}</Text>
-                </Box>
-                <Box width={1} px={2} mb={2}>
-                    <Label htmlFor='frecuency'>Frecuencia:</Label>
-                    <Text id='frecuency'>{project.body.dias}.</Text>
+                    <Text id='location'>{project.body.lugar}</Text>
                 </Box>
                 <Flex mx={-2} mb={3}>
                     <Box width={1/2} px={2}>
@@ -34,7 +26,7 @@ export const ProjectCard = ({project, enrollInProject}) => {
                         <Input 
                             name='startingDate'
                             type='text'
-                            value={project.body.fecheInicio}
+                            value={project.body.fechaInicio}
                             disabled={true}
                         />
                     </Box>
