@@ -2,15 +2,28 @@ import React from 'react'
 import { Flex } from 'rebass'
 import styled from 'styled-components'
 
+import NewUser from './project-forms/newUser'
+
+import { useUser } from '../../context/user-context'
+
 const BlueFlex = styled(Flex)`
-    background: #282C34;
+    background: #f6f6f6;
 
 `
 
 const Header = styled.h1`
-    color:white;
+    color:black;
 `
 function FirstSetup() {
+    const user = useUser()
+    const uid = user.uid
+    const email = user.email
+    const fullName = user.displayName.split(' ')
+    const firstName = fullName[0]
+    const apellidoPaterno = fullName[1]
+    const apellidoMaterno = fullName[2]
+    
+
     return (
         <BlueFlex
         justifyContent='center'
@@ -19,7 +32,7 @@ function FirstSetup() {
         flexDirection='column'
             >
         <Header>Llena tus datos para comenzar</Header>
-        <p>Tipo de líder</p>
+        <NewUser uid={uid} email={email} firstName={firstName} apellidoPaterno={apellidoPaterno} apellidoMaterno={apellidoMaterno} />
         </BlueFlex>
     )
 }

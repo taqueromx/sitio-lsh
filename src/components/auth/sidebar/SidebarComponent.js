@@ -136,10 +136,6 @@ class SidebarComponent extends React.Component {
                 active={this.props.selectedItem === 'Ver Usuarios'}
             />
             <MenuItemComponent
-                title="Registrar Usuarios" icon={IconIdeas}
-                onClick={() => this.onItemClicked('Registrar Usuarios')}
-                active={this.props.selectedItem === 'Registrar Usuarios'} />
-            <MenuItemComponent
                 title="Todos los Proyectos" icon={IconContacts}
                 onClick={() => this.onItemClicked('Todos los Proyectos')}
                 active={this.props.selectedItem === 'Todos los Proyectos'} />
@@ -147,6 +143,18 @@ class SidebarComponent extends React.Component {
                 title="Registrar Proyectos" icon={IconContacts}
                 onClick={() => this.onItemClicked('Registrar Proyectos')}
                 active={this.props.selectedItem === 'Registrar Proyectos'} />
+            <MenuItemComponent
+                title="Registrar Líder" icon={IconIdeas}
+                onClick={() => this.onItemClicked('Registrar Líder')}
+                active={this.props.selectedItem === 'Registrar Líder'} />
+            <MenuItemComponent
+                title="Registrar Guía" icon={IconIdeas}
+                onClick={() => this.onItemClicked('Registrar Guía')}
+                active={this.props.selectedItem === 'Registrar Guía'} />
+            <MenuItemComponent
+                title="Registrar Admin" icon={IconIdeas}
+                onClick={() => this.onItemClicked('Registrar Admin')}
+                active={this.props.selectedItem === 'Registrar Admin'} />
             </>)
     }
 

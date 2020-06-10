@@ -119,18 +119,22 @@ const proyectosAsignados = props => (
 );
 
 export default class NewUser extends Component{
+    constructor(props) {
+        super()
+    }
     render(){
         return (
             <Formik 
                 initialValues={{
-                    nombre: '',
-                    apellidoPaterno: '',
-                    apellidoMaterno: '',
+                    nombre: this.props.firstName,
+                    apellidoPaterno: this.props.apellidoPaterno,
+                    apellidoMaterno: this.props.apellidoMaterno,
                     matricula: '',
                     semestre: '',
                     carrera:'',
-                    email: '',
+                    email: this.props.email,
                     tipoUsuario: 'guia',
+                    uid: this.props.uid
                 }}
                 
                 onSubmit = {

@@ -27,15 +27,21 @@ function SelectView({selectedItem, user}) {
                 {/* break */}
             case 'Ver Usuarios':
                 return <TableWrapper selectedItem={selectedItem}/>
-            case 'Registrar Usuarios':
+                break
+            case 'Registrar Líder':
                 return <NewLider/>; 
+                break
             case 'Todos los Proyectos':
                 return <TableWrapper selectedItem={selectedItem}/>;
+                break
             case 'Registrar Proyectos':
-                //return <NewProject/>
-                //return <NewGuia/>
-                //return <NewAdmin/>
-                return <NewUser/>
+                return <NewProject/>
+                break
+            case 'Registrar Guía':
+                return <NewGuia/>
+                break
+            case 'Registrar Admin':
+                return <NewAdmin/>
                 break   
             default:
                 return <PostDisplay />   
