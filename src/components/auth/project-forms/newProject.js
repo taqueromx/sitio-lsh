@@ -144,7 +144,7 @@ export default class NewProject extends Component {
                     </div>
                     <div className="row">
                         Descripcion General:
-                        <Field name="descripcionGeneral" type="text" className="input" />
+                        <Field name="descripcionGeneral" type="text" className="inputBig" />
                         {errors.descripcionGeneral && touched.descripcionGeneral ? (
                             <div className="error" >{errors.descripcionGeneral}</div>
                          ) : null}
